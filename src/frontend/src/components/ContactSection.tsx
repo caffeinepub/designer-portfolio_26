@@ -1,0 +1,211 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useSubmitContact } from "@/hooks/useQueries";
+import { AlertCircle, CheckCircle, Loader2, Mail } from "lucide-react";
+import { motion } from "motion/react";
+import { useState } from "react";
+import { SiDribbble, SiLinkedin, SiX } from "react-icons/si";
+
+export default function ContactSection() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const { mutate, isPending, isSuccess, isError } = useSubmitContact();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    mutate(form);
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  return (
+    <section id="contact" className="py-32 px-6 lg:px-12 bg-card">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left: heading + info */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">
+              Contact
+            </p>
+            <h2 className="font-display text-5xl md:text-6xl font-bold mb-8 leading-tight">
+              Let&apos;s create
+              <br />
+              <span className="italic">something great.</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-12 max-w-sm">
+              Have a project in mind? I&apos;d love to hear about it. Send me a
+              message and let&apos;s talk about how we can work together.
+            </p>
+
+            <div className="w-12 h-px bg-gold mb-10" />
+
+            <div className="flex items-center gap-3 mb-8">
+              <Mail size={16} className="text-gold" />
+              <a
+                href="mailto:alex@designstudio.co"
+                className="text-foreground hover:text-gold transition-colors font-medium"
+                data-ocid="contact.email.link"
+              >
+                alex@designstudio.co
+              </a>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                data-ocid="contact.linkedin.link"
+                className="text-muted-foreground hover:text-gold transition-colors p-2 border border-border hover:border-gold"
+              >
+                <SiLinkedin size={18} />
+              </a>
+              <a
+                href="https://dribbble.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Dribbble"
+                data-ocid="contact.dribbble.link"
+                className="text-muted-foreground hover:text-gold transition-colors p-2 border border-border hover:border-gold"
+              >
+                <SiDribbble size={18} />
+              </a>
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X / Twitter"
+                data-ocid="contact.twitter.link"
+                className="text-muted-foreground hover:text-gold transition-colors p-2 border border-border hover:border-gold"
+              >
+                <SiX size={18} />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right: form */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          >
+            {isSuccess ? (
+              <div
+                className="flex flex-col items-center justify-center h-full min-h-64 gap-4 border border-gold/30 p-12"
+                data-ocid="contact.success_state"
+              >
+                <CheckCircle className="text-gold" size={40} />
+                <h3 className="font-display text-2xl font-semibold">
+                  Message Sent!
+                </h3>
+                <p className="text-muted-foreground text-center">
+                  Thanks for reaching out. I&apos;ll get back to you within 24
+                  hours.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {isError && (
+                  <div
+                    className="flex items-center gap-3 p-4 border border-destructive/50 bg-destructive/10 text-sm text-destructive"
+                    data-ocid="contact.error_state"
+                  >
+                    <AlertCircle size={16} />
+                    Something went wrong. Please try again.
+                  </div>
+                )}
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="name"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
+                    Name
+                  </Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your name"
+                    className="rounded-none bg-background border-border focus:border-gold h-12 text-base"
+                    data-ocid="contact.input"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="email"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="your@email.com"
+                    className="rounded-none bg-background border-border focus:border-gold h-12 text-base"
+                    data-ocid="contact.email.input"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="message"
+                    className="text-xs tracking-widest uppercase text-muted-foreground"
+                  >
+                    Message
+                  </Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    placeholder="Tell me about your project..."
+                    className="rounded-none bg-background border-border focus:border-gold text-base resize-none"
+                    data-ocid="contact.textarea"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full rounded-none bg-gold text-primary-foreground hover:bg-primary/90 font-semibold tracking-wide h-12"
+                  data-ocid="contact.submit_button"
+                >
+                  {isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
+                </Button>
+              </form>
+            )}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
