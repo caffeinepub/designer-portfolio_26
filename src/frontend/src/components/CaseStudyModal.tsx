@@ -1,0 +1,161 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { Briefcase, Clock, ExternalLink, Tag, X } from "lucide-react";
+
+export interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  cover: string;
+  year: string;
+  role: string;
+  tools: string[];
+  duration: string;
+  overview: string;
+  problem: string;
+  solution: string;
+  outcome: string;
+  caseStudyUrl: string;
+}
+
+interface CaseStudyModalProps {
+  project: Project | null;
+  onClose: () => void;
+}
+
+function Section({
+  label,
+  children,
+}: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-8">
+      <div className="flex items-center gap-3 mb-3">
+        <span className="text-xs tracking-[0.25em] uppercase text-gold font-medium">
+          {label}
+        </span>
+        <div className="flex-1 h-px bg-border" />
+      </div>
+      <div className="text-sm leading-7 text-foreground/85">{children}</div>
+    </div>
+  );
+}
+
+export default function CaseStudyModal({
+  project,
+  onClose,
+}: CaseStudyModalProps) {
+  if (!project) return null;
+
+  return (
+    <Dialog open={!!project} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        data-ocid="casestudy.modal"
+        className="max-w-3xl w-full p-0 overflow-hidden bg-card border-border rounded-none gap-0"
+        style={{ maxHeight: "90vh" }}
+      >
+        {/* Cover image */}
+        <div className="relative overflow-hidden aspect-[16/7]">
+          <img
+            src={project.cover}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/30 to-transparent" />
+          {/* Close button */}
+          <button
+            type="button"
+            data-ocid="casestudy.close_button"
+            onClick={onClose}
+            className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center bg-background/70 backdrop-blur-sm border border-border text-foreground/70 hover:text-foreground hover:bg-background transition-colors"
+            aria-label="Close"
+          >
+            <X size={16} />
+          </button>
+          <div className="absolute bottom-5 left-6">
+            <p className="font-mono text-xs tracking-widest text-gold/80 mb-1">
+              {project.year}
+            </p>
+            <DialogHeader>
+              <DialogTitle className="font-display text-2xl md:text-3xl font-bold text-foreground text-left">
+                {project.title}
+              </DialogTitle>
+            </DialogHeader>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {project.tags.map((tag) => (
+                <Badge
+                  key={tag}
+                  variant="outline"
+                  className="text-xs border-gold/40 text-gold/80 rounded-none px-2 py-0.5 bg-background/40 backdrop-blur-sm"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <ScrollArea className="max-h-[calc(90vh-280px)]">
+          <div className="p-6 md:p-8">
+            {/* Meta row */}
+            <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-background/40 border border-border">
+              <div>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+                  <Briefcase size={11} /> Role
+                </div>
+                <p className="text-sm font-medium">{project.role}</p>
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+                  <Tag size={11} /> Tools
+                </div>
+                <p className="text-sm font-medium">
+                  {project.tools.join(", ")}
+                </p>
+              </div>
+              <div>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+                  <Clock size={11} /> Duration
+                </div>
+                <p className="text-sm font-medium">{project.duration}</p>
+              </div>
+            </div>
+
+            <Section label="Overview">{project.overview}</Section>
+            <Section label="The Problem">{project.problem}</Section>
+            <Section label="The Solution">{project.solution}</Section>
+            <Section label="Outcome">{project.outcome}</Section>
+
+            {project.caseStudyUrl && (
+              <>
+                <Separator className="mb-6" />
+                <div className="flex justify-center">
+                  <Button
+                    data-ocid="casestudy.link.button"
+                    asChild
+                    className="bg-gold text-background hover:bg-gold/90 rounded-none px-8 py-3 h-auto font-semibold tracking-wide uppercase text-xs gap-2"
+                  >
+                    <a
+                      href={project.caseStudyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open Full Case Study <ExternalLink size={14} />
+                    </a>
+                  </Button>
+                </div>
+              </>
+            )}
+          </div>
+        </ScrollArea>
+      </DialogContent>
+    </Dialog>
+  );
+}

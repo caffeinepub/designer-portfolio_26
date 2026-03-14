@@ -1,8 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import { useState } from "react";
+import CaseStudyModal, { type Project } from "./CaseStudyModal";
 
-const projects = [
+const projects: Project[] = [
   {
     title: "FinTrack App",
     description:
@@ -10,6 +12,18 @@ const projects = [
     tags: ["Mobile", "FinTech", "iOS"],
     cover: "/assets/generated/project-1.dim_800x500.jpg",
     year: "2024",
+    role: "Lead Product Designer",
+    tools: ["Figma", "Maze", "Jira"],
+    duration: "4 months",
+    overview:
+      "FinTrack is a mobile banking application serving over 2 million users across India. I led the end-to-end redesign of the core transaction flow and dashboard, transforming a cluttered, low-retention interface into a clean, intuitive experience that users love.",
+    problem:
+      "The original app suffered from a fragmented information architecture, inconsistent visual language, and a transaction flow that required an average of 7 taps to complete a simple transfer. User satisfaction scores were at 2.9/5, and monthly active users had plateaued despite growing sign-ups.",
+    solution:
+      "I introduced a card-first information hierarchy, collapsing the bottom nav into 3 core tabs. The transaction flow was redesigned to a 3-step pattern with smart defaults. A new micro-interaction system made every action feel instant and rewarding. Usability testing ran across 5 rounds with 40 participants before launch.",
+    outcome:
+      "Engagement increased 40% within 60 days of launch. App Store rating rose from 2.9 to 4.6. Transaction completion rate improved by 28%. The design system became the foundation for the web dashboard built the following quarter.",
+    caseStudyUrl: "",
   },
   {
     title: "Nova Commerce",
@@ -18,6 +32,18 @@ const projects = [
     tags: ["Web", "E-Commerce", "A11y"],
     cover: "/assets/generated/project-2.dim_800x500.jpg",
     year: "2023",
+    role: "Senior Product Designer",
+    tools: ["Figma", "Hotjar", "Notion", "Storybook"],
+    duration: "6 months",
+    overview:
+      "Nova Commerce is a D2C fashion brand that needed a complete digital overhaul to compete with top-tier e-commerce experiences. I owned the full redesign from discovery through handoff, with a specific mandate to improve conversion rates and meet WCAG 2.1 AA accessibility standards.",
+    problem:
+      "Session recordings revealed a 68% cart abandonment rate on mobile. The existing checkout flow had 9 steps, lacked clear progress indicators, and the product detail pages buried the add-to-cart action below the fold. Screen reader testing showed critical failures in form labeling and focus management.",
+    solution:
+      "I redesigned the checkout into a 4-step wizard with persistent order summary and inline validation. Product pages were rebuilt with a sticky purchase bar on mobile. A full accessibility audit drove 60+ component-level fixes. All changes were documented in a new Storybook-based design system.",
+    outcome:
+      "Cart abandonment dropped from 68% to 41%. Mobile conversion rate grew by 22%. Accessibility score went from 61 to 94 on Lighthouse. The new design system reduced developer handoff time by 35% on subsequent feature work.",
+    caseStudyUrl: "",
   },
   {
     title: "Pulse Design System",
@@ -26,10 +52,24 @@ const projects = [
     tags: ["Design System", "Figma", "Tokens"],
     cover: "/assets/generated/project-3.dim_800x500.jpg",
     year: "2023",
+    role: "Design Systems Lead",
+    tools: ["Figma", "Tokens Studio", "Zeroheight", "GitHub"],
+    duration: "8 months",
+    overview:
+      "Pulse is the design system I architected and built for a Series B SaaS company, adopted by 6 product teams and 12 engineers. It covers 80+ components, a full token architecture, and a documentation site that made it genuinely self-serve from day one.",
+    problem:
+      "The company had 3 separate design files in Figma, none of which matched the codebase. Engineers were rebuilding common UI patterns repeatedly. Each product had a different visual language, making the platform feel incoherent to users moving between modules.",
+    solution:
+      "I started with a full UI audit, cataloguing 400+ unique UI instances down to 80 reusable components. Built a semantic token system (primitive → semantic → component) synced between Figma and code via Tokens Studio. Wrote a Zeroheight documentation site with usage guidelines, do/don't examples, and Figma embed previews for every component.",
+    outcome:
+      "Design time on new features dropped 30%. Cross-team visual consistency issues fell by 85% in quarterly design reviews. Three new designers onboarded in under 2 days using the documentation alone. The system has been maintained and extended for 18 months with zero major regressions.",
+    caseStudyUrl: "",
   },
 ];
 
 export default function WorkSection() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <section id="work" className="py-32 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
@@ -60,6 +100,7 @@ export default function WorkSection() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.15, duration: 0.7, ease: "easeOut" }}
               data-ocid={`work.item.${i + 1}`}
+              onClick={() => setSelectedProject(project)}
               className="group relative bg-card border border-border overflow-hidden cursor-pointer"
             >
               {/* Cover image */}
@@ -105,6 +146,11 @@ export default function WorkSection() {
           ))}
         </div>
       </div>
+
+      <CaseStudyModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }
