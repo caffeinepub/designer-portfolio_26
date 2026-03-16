@@ -13,43 +13,31 @@
 
 @layer base {
   :root {
-    /* Dark editorial — warm charcoal + champagne gold */
     --background: 13% 0.008 60;
     --foreground: 95% 0.012 80;
-
     --card: 17% 0.01 58;
     --card-foreground: 95% 0.012 80;
-
     --popover: 17% 0.01 58;
     --popover-foreground: 95% 0.012 80;
-
     --primary: 78% 0.13 75;
     --primary-foreground: 12% 0.008 60;
-
     --secondary: 22% 0.012 60;
     --secondary-foreground: 85% 0.012 80;
-
     --muted: 22% 0.012 60;
     --muted-foreground: 62% 0.018 72;
-
     --accent: 78% 0.13 75;
     --accent-foreground: 12% 0.008 60;
-
     --destructive: 55% 0.22 25;
     --destructive-foreground: 98% 0.002 80;
-
     --border: 26% 0.012 58;
     --input: 22% 0.012 58;
     --ring: 78% 0.13 75;
-
     --radius: 0.25rem;
-
     --chart-1: 78% 0.13 75;
     --chart-2: 70% 0.15 200;
     --chart-3: 65% 0.18 140;
     --chart-4: 80% 0.12 50;
     --chart-5: 60% 0.2 300;
-
     --sidebar: 15% 0.01 58;
     --sidebar-foreground: 95% 0.012 80;
     --sidebar-primary: 78% 0.13 75;
@@ -65,12 +53,10 @@
   * {
     @apply border-border;
   }
-
   html {
     color-scheme: dark;
     scroll-behavior: smooth;
   }
-
   body {
     @apply bg-background text-foreground;
     font-family: "General Sans", system-ui, sans-serif;
@@ -83,19 +69,15 @@
   .font-display {
     font-family: "Playfair Display", Georgia, serif;
   }
-
   .text-gold {
-    color: oklch(var(--primary));
+    color: #f8cb45;
   }
-
   .bg-gold {
-    background-color: oklch(var(--primary));
+    background-color: #f8cb45;
   }
-
   .border-gold {
-    border-color: oklch(var(--primary));
+    border-color: #f8cb45;
   }
-
   .grain-overlay::after {
     content: "";
     position: fixed;

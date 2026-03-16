@@ -9,6 +9,13 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+function setYellow(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.currentTarget.style.color = "#F8CB45";
+}
+function clearColor(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.currentTarget.style.color = "";
+}
+
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,15 +33,19 @@ export default function NavBar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white backdrop-blur-xl border-b border-border" : ""
+          scrolled
+            ? "bg-white backdrop-blur-xl border-b border-border"
+            : "bg-black/40 backdrop-blur-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
           <a
             href="#hero"
-            className={`font-display text-lg font-semibold tracking-tight transition-colors hover:opacity-80 ${
+            className={`font-display text-lg font-semibold tracking-tight transition-colors ${
               scrolled ? "text-black" : "text-white"
             }`}
+            onMouseEnter={setYellow}
+            onMouseLeave={clearColor}
             data-ocid="nav.link"
           >
             Abhishek Beniwal
@@ -48,10 +59,10 @@ export default function NavBar() {
                 href={link.href}
                 data-ocid={`nav.${link.label.toLowerCase()}.link`}
                 className={`text-sm font-medium tracking-wide transition-colors ${
-                  scrolled
-                    ? "text-black/70 hover:text-black"
-                    : "text-white/80 hover:text-white"
+                  scrolled ? "text-black/70" : "text-white"
                 }`}
+                onMouseEnter={setYellow}
+                onMouseLeave={clearColor}
               >
                 {link.label}
               </a>
@@ -88,7 +99,9 @@ export default function NavBar() {
                   key={link.label}
                   href={link.href}
                   data-ocid={`nav.mobile.${link.label.toLowerCase()}.link`}
-                  className="text-base font-medium text-black py-2 border-b border-border last:border-0"
+                  className="text-base font-medium text-black py-2 border-b border-border last:border-0 transition-colors"
+                  onMouseEnter={setYellow}
+                  onMouseLeave={clearColor}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}

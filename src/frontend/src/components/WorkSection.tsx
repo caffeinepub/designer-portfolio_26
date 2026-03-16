@@ -6,24 +6,26 @@ import CaseStudyModal, { type Project } from "./CaseStudyModal";
 
 const projects: Project[] = [
   {
-    title: "FinTrack App",
+    title: "Product Description",
     description:
-      "Redesigned the mobile banking experience for 2M+ users, increasing engagement by 40%.",
-    tags: ["Mobile", "FinTech", "iOS"],
-    cover: "/assets/generated/project-1.dim_800x500.jpg",
+      "Redesigned the Product Description Screen Experience for 1.8 million users. Product Detail Engagement Increased by 40%.",
+    tags: ["Mobile", "UX", "Figma"],
+    cover: "/assets/uploads/PDP-1.png",
+    mockup: "/assets/uploads/PDP-1.png",
     year: "2024",
-    role: "Lead Product Designer",
-    tools: ["Figma", "Maze", "Jira"],
-    duration: "4 months",
+    role: "Product Designer",
+    tools: ["Figma", "Miro", "Relume"],
+    duration: "3 Months",
     overview:
-      "FinTrack is a mobile banking application serving over 2 million users across India. I led the end-to-end redesign of the core transaction flow and dashboard, transforming a cluttered, low-retention interface into a clean, intuitive experience that users love.",
+      "This project focuses on redesigning a Product Description Page for an agriculture product marketplace. The goal was to improve product clarity, simplify purchase decisions, and increase user engagement by restructuring information hierarchy, improving visuals, and making key product details easier to understand.",
     problem:
-      "The original app suffered from a fragmented information architecture, inconsistent visual language, and a transaction flow that required an average of 7 taps to complete a simple transfer. User satisfaction scores were at 2.9/5, and monthly active users had plateaued despite growing sign-ups.",
+      "The existing product page had poor information hierarchy, cluttered content, and low visual emphasis on important elements like dosage, ingredients, and variants. Users struggled to quickly understand product benefits, resulting in lower engagement, confusion, and reduced product add-to-cart conversions.",
     solution:
-      "I introduced a card-first information hierarchy, collapsing the bottom nav into 3 core tabs. The transaction flow was redesigned to a 3-step pattern with smart defaults. A new micro-interaction system made every action feel instant and rewarding. Usability testing ran across 5 rounds with 40 participants before launch.",
+      "The redesign focused on improving content hierarchy, visual clarity, and usability. Key product details such as variants, dosage, benefits, and target crops were reorganized into structured sections. Clear call-to-action buttons, improved product imagery, and simplified layout enhanced decision-making and usability.",
     outcome:
-      "Engagement increased 40% within 60 days of launch. App Store rating rose from 2.9 to 4.6. Transaction completion rate improved by 28%. The design system became the foundation for the web dashboard built the following quarter.",
-    caseStudyUrl: "",
+      "After redesigning the product page, users were able to understand product information faster and navigate content easily. The improved layout increased user engagement, reduced confusion, and helped users make quicker purchase decisions, ultimately improving product interaction and conversions.",
+    caseStudyUrl:
+      "https://www.figma.com/design/Lm3YebADVUvFfTA2NXyQtX/Beniwal?node-id=1985-16498&t=QCC1OpzWB7Zu5BXK-1",
   },
   {
     title: "Nova Commerce",
@@ -67,6 +69,97 @@ const projects: Project[] = [
   },
 ];
 
+/** Android phone mockup wrapping an image for the Project 1 card thumbnail */
+function AndroidMockupThumbnail({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
+      {/* Phone outer shell */}
+      <div
+        className="relative flex flex-col"
+        style={{
+          width: "38%",
+          aspectRatio: "9/18",
+          background: "#1a1a1a",
+          borderRadius: "2rem",
+          border: "2.5px solid #3a3a3a",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.7), inset 0 0 0 1px #2a2a2a",
+          padding: "6% 3% 4% 3%",
+        }}
+      >
+        {/* Status bar */}
+        <div
+          className="flex items-center justify-between px-1 mb-1 shrink-0"
+          style={{ height: "6%" }}
+        >
+          <span
+            style={{
+              fontSize: "0.45rem",
+              color: "#aaa",
+              fontFamily: "monospace",
+            }}
+          >
+            9:41
+          </span>
+          <div
+            style={{
+              width: "18%",
+              height: "4px",
+              background: "#333",
+              borderRadius: "999px",
+            }}
+          />
+          <div className="flex gap-0.5 items-center">
+            <div
+              style={{
+                width: "3px",
+                height: "3px",
+                borderRadius: "50%",
+                background: "#aaa",
+              }}
+            />
+            <div
+              style={{
+                width: "3px",
+                height: "3px",
+                borderRadius: "50%",
+                background: "#aaa",
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Screen area */}
+        <div
+          className="flex-1 overflow-hidden relative"
+          style={{ borderRadius: "0.6rem", background: "#000" }}
+        >
+          <img
+            src={src}
+            alt={alt}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Home indicator */}
+        <div
+          className="flex justify-center items-center shrink-0"
+          style={{ height: "6%" }}
+        >
+          <div
+            style={{
+              width: "30%",
+              height: "3px",
+              background: "#555",
+              borderRadius: "999px",
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function WorkSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -103,14 +196,21 @@ export default function WorkSection() {
               onClick={() => setSelectedProject(project)}
               className="group relative bg-card border border-border overflow-hidden cursor-pointer"
             >
-              {/* Cover image */}
+              {/* Cover / Thumbnail */}
               <div className="relative overflow-hidden aspect-[8/5]">
-                <img
-                  src={project.cover}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
+                {i === 0 ? (
+                  <AndroidMockupThumbnail
+                    src={project.cover}
+                    alt={project.title}
+                  />
+                ) : (
+                  <img
+                    src={project.cover}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                )}
                 <div className="absolute top-4 right-4 font-mono text-xs tracking-widest text-foreground/70 bg-background/60 backdrop-blur-sm px-2 py-1">
                   {project.year}
                 </div>

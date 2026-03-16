@@ -15,6 +15,7 @@ export interface Project {
   description: string;
   tags: string[];
   cover: string;
+  mockup?: string;
   year: string;
   role: string;
   tools: string[];
@@ -131,6 +132,35 @@ export default function CaseStudyModal({
             <Section label="Overview">{project.overview}</Section>
             <Section label="The Problem">{project.problem}</Section>
             <Section label="The Solution">{project.solution}</Section>
+
+            {/* Mobile Mockup */}
+            {project.mockup && (
+              <div className="mb-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs tracking-[0.25em] uppercase text-gold font-medium">
+                    Mobile Mockup
+                  </span>
+                  <div className="flex-1 h-px bg-border" />
+                </div>
+                <div className="flex justify-center">
+                  <div className="relative">
+                    {/* Phone frame */}
+                    <div className="w-56 bg-background border-2 border-border rounded-[2rem] overflow-hidden shadow-2xl p-1">
+                      <div className="w-full bg-black rounded-[1.7rem] overflow-hidden">
+                        <img
+                          src={project.mockup}
+                          alt={`${project.title} mobile mockup`}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
+                    </div>
+                    {/* Glow effect */}
+                    <div className="absolute -inset-4 bg-gold/5 rounded-full blur-2xl -z-10" />
+                  </div>
+                </div>
+              </div>
+            )}
+
             <Section label="Outcome">{project.outcome}</Section>
 
             {project.caseStudyUrl && (

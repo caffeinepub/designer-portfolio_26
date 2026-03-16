@@ -3,10 +3,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useSubmitContact } from "@/hooks/useQueries";
-import { AlertCircle, CheckCircle, Loader2, Mail } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle,
+  Loader2,
+  Mail,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
-import { SiDribbble, SiLinkedin, SiX } from "react-icons/si";
+import { SiBehance, SiDribbble, SiLinkedin } from "react-icons/si";
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -49,20 +56,45 @@ export default function ContactSection() {
 
             <div className="w-12 h-px bg-gold mb-10" />
 
-            <div className="flex items-center gap-3 mb-8">
-              <Mail size={16} className="text-gold" />
-              <a
-                href="mailto:alex@designstudio.co"
-                className="text-foreground hover:text-gold transition-colors font-medium"
-                data-ocid="contact.email.link"
-              >
-                alex@designstudio.co
-              </a>
+            {/* Contact Details */}
+            <div className="space-y-4 mb-10">
+              <div className="flex items-center gap-3">
+                <Mail size={16} className="text-gold flex-shrink-0" />
+                <a
+                  href="mailto:abhishekroyzez@gmail.com"
+                  className="text-foreground hover:text-gold transition-colors font-medium"
+                  data-ocid="contact.email.link"
+                >
+                  abhishekroyzez@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone size={16} className="text-gold flex-shrink-0" />
+                <a
+                  href="tel:+918178675444"
+                  className="text-foreground hover:text-gold transition-colors font-medium"
+                  data-ocid="contact.phone.link"
+                >
+                  +91 8178675444
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <MessageCircle size={16} className="text-gold flex-shrink-0" />
+                <a
+                  href="https://wa.me/919540064780"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:text-gold transition-colors font-medium"
+                  data-ocid="contact.whatsapp.link"
+                >
+                  WhatsApp: +91 9540064780
+                </a>
+              </div>
             </div>
 
             <div className="flex items-center gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/abhishekbeniwal14/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -72,7 +104,17 @@ export default function ContactSection() {
                 <SiLinkedin size={18} />
               </a>
               <a
-                href="https://dribbble.com"
+                href="https://www.behance.net/abhishekbeniwal"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Behance"
+                data-ocid="contact.behance.link"
+                className="text-muted-foreground hover:text-gold transition-colors p-2 border border-border hover:border-gold"
+              >
+                <SiBehance size={18} />
+              </a>
+              <a
+                href="https://www.behance.net/abhishekbeniwal"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Dribbble"
@@ -80,16 +122,6 @@ export default function ContactSection() {
                 className="text-muted-foreground hover:text-gold transition-colors p-2 border border-border hover:border-gold"
               >
                 <SiDribbble size={18} />
-              </a>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X / Twitter"
-                data-ocid="contact.twitter.link"
-                className="text-muted-foreground hover:text-gold transition-colors p-2 border border-border hover:border-gold"
-              >
-                <SiX size={18} />
               </a>
             </div>
           </motion.div>

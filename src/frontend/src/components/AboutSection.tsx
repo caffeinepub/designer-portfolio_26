@@ -10,10 +10,9 @@ const skills = [
 ];
 
 const stats = [
-  { value: "7", unit: "Years", label: "Experience" },
-  { value: "40+", unit: "Projects", label: "Delivered" },
-  { value: "15", unit: "Clients", label: "Worldwide" },
-  { value: "3", unit: "Awards", label: "Design" },
+  { value: "6+", unit: "Years", label: "Total Experience" },
+  { value: "25+", unit: "Projects", label: "Delivered" },
+  { value: "8", unit: "Clients", label: "Worldwide" },
 ];
 
 export default function AboutSection() {
@@ -38,10 +37,12 @@ export default function AboutSection() {
             </h2>
 
             <p className="text-base text-muted-foreground leading-relaxed mb-10 max-w-lg">
-              Hi, I&apos;m Alex. With 7 years of experience designing digital
-              products, I bridge the gap between user needs and business goals.
-              I&apos;ve worked with startups and Fortune 500 companies across
-              fintech, e-commerce, and SaaS.
+              Hi, I&apos;m Abhishek Beniwal. I have 6+ years of experience
+              designing intuitive digital products that improve user engagement
+              and conversions. I specialize in end-to-end UX, interaction
+              design, user testing, and design systems. I collaborate closely
+              with product managers, developers, and stakeholders to deliver
+              impactful user-centered solutions.
             </p>
 
             <div className="w-12 h-px bg-gold mb-10" />
