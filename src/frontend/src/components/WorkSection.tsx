@@ -10,8 +10,10 @@ const projects: Project[] = [
     description:
       "Redesigned the Product Description Screen Experience for 1.8 million users. Product Detail Engagement Increased by 40%.",
     tags: ["Mobile", "UX", "Figma"],
-    cover: "/assets/uploads/PDP-1.png",
-    mockup: "/assets/uploads/PDP-1.png",
+    cover: "/assets/uploads/Project-1-Thumbnail-1.png",
+    modalCover: "/assets/uploads/Project_1_Model_Pop_Up-1.png",
+    mockup: "/assets/uploads/Project-1-Thumbnail-1.png",
+    mockupSimple: true,
     year: "2024",
     role: "Product Designer",
     tools: ["Figma", "Miro", "Relume"],
@@ -28,24 +30,28 @@ const projects: Project[] = [
       "https://www.figma.com/design/Lm3YebADVUvFfTA2NXyQtX/Beniwal?node-id=1985-16498&t=QCC1OpzWB7Zu5BXK-1",
   },
   {
-    title: "Nova Commerce",
+    title: "Ayurvedic Healthcare App",
     description:
-      "End-to-end e-commerce platform redesign focused on conversion optimization and accessibility.",
-    tags: ["Web", "E-Commerce", "A11y"],
-    cover: "/assets/generated/project-2.dim_800x500.jpg",
-    year: "2023",
-    role: "Senior Product Designer",
-    tools: ["Figma", "Hotjar", "Notion", "Storybook"],
-    duration: "6 months",
+      "Designed UI for an Ayurvedic healthcare app covering doctor consultations, product discovery, and blogs. Transformed client-provided wireframes into intuitive, scalable mobile interfaces.",
+    tags: ["Mobile", "UI", "Figma"],
+    cover: "/assets/uploads/Ayurveda-1-1.png",
+    modalCover: "/assets/uploads/Project_2_Model_Pop_Up-1.png",
+    mockup: "/assets/uploads/Ayurveda-1-1.png",
+    mockupSimple: true,
+    year: "2025",
+    role: "Product Designer",
+    tools: ["Figma"],
+    duration: "2 Months",
     overview:
-      "Nova Commerce is a D2C fashion brand that needed a complete digital overhaul to compete with top-tier e-commerce experiences. I owned the full redesign from discovery through handoff, with a specific mandate to improve conversion rates and meet WCAG 2.1 AA accessibility standards.",
+      "Designed UI for an Ayurvedic healthcare app covering doctor consultations, product discovery, and blogs. Transformed client-provided wireframes into intuitive, scalable, and visually consistent mobile interfaces focused on usability.",
     problem:
-      "Session recordings revealed a 68% cart abandonment rate on mobile. The existing checkout flow had 9 steps, lacked clear progress indicators, and the product detail pages buried the add-to-cart action below the fold. Screen reader testing showed critical failures in form labeling and focus management.",
+      "Many users who prefer Ayurvedic treatments struggle to find trusted doctors and authentic products in one place. Existing platforms often lack a simple consultation booking process and organized product discovery experience.",
     solution:
-      "I redesigned the checkout into a 4-step wizard with persistent order summary and inline validation. Product pages were rebuilt with a sticky purchase bar on mobile. A full accessibility audit drove 60+ component-level fixes. All changes were documented in a new Storybook-based design system.",
+      "Created a seamless experience for booking doctor consultations, exploring Ayurvedic products, and reading health content. Ensured intuitive navigation, faster task completion, and a clean, trustworthy visual interface.",
     outcome:
-      "Cart abandonment dropped from 68% to 41%. Mobile conversion rate grew by 22%. Accessibility score went from 61 to 94 on Lighthouse. The new design system reduced developer handoff time by 35% on subsequent feature work.",
-    caseStudyUrl: "",
+      "• Achieved 30% faster booking flow\n• 25% improved product discovery\n• 20% higher engagement in blogs\n• 15% increase in consultation conversions through improved UI and simplified navigation.",
+    caseStudyUrl:
+      "https://www.figma.com/design/Lm3YebADVUvFfTA2NXyQtX/Beniwal?node-id=1907-8819&t=g9jIcPZVuClmJHmv-1",
   },
   {
     title: "Pulse Design System",
@@ -69,97 +75,6 @@ const projects: Project[] = [
   },
 ];
 
-/** Android phone mockup wrapping an image for the Project 1 card thumbnail */
-function AndroidMockupThumbnail({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
-      {/* Phone outer shell */}
-      <div
-        className="relative flex flex-col"
-        style={{
-          width: "38%",
-          aspectRatio: "9/18",
-          background: "#1a1a1a",
-          borderRadius: "2rem",
-          border: "2.5px solid #3a3a3a",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.7), inset 0 0 0 1px #2a2a2a",
-          padding: "6% 3% 4% 3%",
-        }}
-      >
-        {/* Status bar */}
-        <div
-          className="flex items-center justify-between px-1 mb-1 shrink-0"
-          style={{ height: "6%" }}
-        >
-          <span
-            style={{
-              fontSize: "0.45rem",
-              color: "#aaa",
-              fontFamily: "monospace",
-            }}
-          >
-            9:41
-          </span>
-          <div
-            style={{
-              width: "18%",
-              height: "4px",
-              background: "#333",
-              borderRadius: "999px",
-            }}
-          />
-          <div className="flex gap-0.5 items-center">
-            <div
-              style={{
-                width: "3px",
-                height: "3px",
-                borderRadius: "50%",
-                background: "#aaa",
-              }}
-            />
-            <div
-              style={{
-                width: "3px",
-                height: "3px",
-                borderRadius: "50%",
-                background: "#aaa",
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Screen area */}
-        <div
-          className="flex-1 overflow-hidden relative"
-          style={{ borderRadius: "0.6rem", background: "#000" }}
-        >
-          <img
-            src={src}
-            alt={alt}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Home indicator */}
-        <div
-          className="flex justify-center items-center shrink-0"
-          style={{ height: "6%" }}
-        >
-          <div
-            style={{
-              width: "30%",
-              height: "3px",
-              background: "#555",
-              borderRadius: "999px",
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function WorkSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -174,13 +89,11 @@ export default function WorkSection() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-16"
         >
-          <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">
+          <p className="text-xs tracking-[0.25em] uppercase text-gray-500 mb-3">
             Portfolio
           </p>
-          <h2 className="font-display text-5xl md:text-6xl font-bold">
-            Selected Work
-          </h2>
-          <div className="w-12 h-px bg-gold mt-6" />
+          <h2 className="text-5xl md:text-6xl font-bold">Selected Work</h2>
+          <div className="w-12 h-px bg-gray-300 mt-6" />
         </motion.div>
 
         {/* Project grid */}
@@ -198,25 +111,18 @@ export default function WorkSection() {
             >
               {/* Cover / Thumbnail */}
               <div className="relative overflow-hidden aspect-[8/5]">
-                {i === 0 ? (
-                  <AndroidMockupThumbnail
-                    src={project.cover}
-                    alt={project.title}
-                  />
-                ) : (
-                  <img
-                    src={project.cover}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                )}
-                <div className="absolute top-4 right-4 font-mono text-xs tracking-widest text-foreground/70 bg-background/60 backdrop-blur-sm px-2 py-1">
+                <img
+                  src={project.cover}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 right-4 z-20 font-mono text-xs tracking-widest text-foreground/70 bg-background/60 backdrop-blur-sm px-2 py-1">
                   {project.year}
                 </div>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-background/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <div className="flex items-center gap-2 text-gold font-semibold text-sm tracking-wide uppercase border border-gold px-6 py-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="absolute inset-0 z-10 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="flex items-center gap-2 text-white font-semibold text-sm tracking-wide uppercase border border-white px-6 py-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     View Case Study <ArrowUpRight size={14} />
                   </div>
                 </div>
@@ -235,9 +141,7 @@ export default function WorkSection() {
                     </Badge>
                   ))}
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-2">
-                  {project.title}
-                </h3>
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {project.description}
                 </p>

@@ -17,7 +17,7 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-32 px-6 lg:px-12 bg-card">
+    <section id="about" className="py-32 px-6 lg:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left: Bio */}
@@ -27,10 +27,10 @@ export default function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">
+            <p className="text-xs tracking-[0.25em] uppercase text-gray-500 mb-3">
               About
             </p>
-            <h2 className="font-display text-5xl md:text-6xl font-bold mb-8 leading-tight">
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
               Craft over
               <br />
               <span className="italic">convention.</span>
@@ -45,7 +45,7 @@ export default function AboutSection() {
               impactful user-centered solutions.
             </p>
 
-            <div className="w-12 h-px bg-gold mb-10" />
+            <div className="w-12 h-px bg-gray-300 mb-10" />
 
             {/* Skills grid */}
             <div>
@@ -85,10 +85,10 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
-                  className="bg-card p-10 flex flex-col justify-between min-h-40"
+                  className="bg-white p-10 flex flex-col justify-between min-h-40"
                   data-ocid={`about.stat.${i + 1}`}
                 >
-                  <div className="font-display text-5xl md:text-6xl font-bold text-gold leading-none">
+                  <div className="text-5xl md:text-6xl font-bold text-gray-900 leading-none">
                     {stat.value}
                   </div>
                   <div>

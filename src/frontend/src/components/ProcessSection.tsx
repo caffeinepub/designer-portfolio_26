@@ -39,13 +39,11 @@ export default function ProcessSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-24"
         >
-          <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">
+          <p className="text-xs tracking-[0.25em] uppercase text-gray-500 mb-3">
             Methodology
           </p>
-          <h2 className="font-display text-5xl md:text-6xl font-bold">
-            My Design Process
-          </h2>
-          <div className="w-12 h-px bg-gold mt-6" />
+          <h2 className="text-5xl md:text-6xl font-bold">My Design Process</h2>
+          <div className="w-12 h-px bg-gray-300 mt-6" />
         </motion.div>
 
         {/* Timeline — desktop horizontal, mobile vertical */}
@@ -53,10 +51,7 @@ export default function ProcessSection() {
           {/* Horizontal connector line (desktop only) */}
           <div
             className="hidden lg:block absolute top-[2.25rem] left-[calc(12.5%+1.25rem)] right-[calc(12.5%+1.25rem)] h-px"
-            style={{
-              background:
-                "linear-gradient(to right, #F8CB45 0%, #F8CB4560 50%, #F8CB45 100%)",
-            }}
+            style={{ background: "#e5e7eb" }}
             aria-hidden="true"
           />
 
@@ -82,13 +77,13 @@ export default function ProcessSection() {
                     <div
                       className="w-10 h-10 rounded-full border-2 flex items-center justify-center flex-shrink-0 relative z-10"
                       style={{
-                        borderColor: "#F8CB45",
+                        borderColor: "#1a1a1a",
                         background: "transparent",
                       }}
                     >
                       <span
                         className="font-mono text-xs font-bold"
-                        style={{ color: "#F8CB45" }}
+                        style={{ color: "#1a1a1a" }}
                       >
                         {step.number}
                       </span>
@@ -97,13 +92,13 @@ export default function ProcessSection() {
                     {i < steps.length - 1 && (
                       <div
                         className="w-px flex-1 mt-3"
-                        style={{ background: "#F8CB4540", minHeight: "3rem" }}
+                        style={{ background: "#e5e7eb", minHeight: "3rem" }}
                         aria-hidden="true"
                       />
                     )}
                   </div>
                   <div className="pb-4">
-                    <h3 className="font-display text-2xl font-semibold mb-3">
+                    <h3 className="text-2xl font-semibold mb-3">
                       {step.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -118,23 +113,21 @@ export default function ProcessSection() {
                   <div
                     className="w-[4.5rem] h-[4.5rem] rounded-full border-2 flex items-center justify-center flex-shrink-0 relative z-10 mb-8 transition-all duration-500 group-hover:scale-110"
                     style={{
-                      borderColor: "#F8CB45",
+                      borderColor: "#1a1a1a",
                       background: "transparent",
-                      boxShadow: "0 0 0 0px #F8CB4520",
+                      boxShadow: "0 0 0 0px rgba(0,0,0,0.08)",
                     }}
                   >
                     <span
                       className="font-mono text-lg font-bold"
-                      style={{ color: "#F8CB45" }}
+                      style={{ color: "#1a1a1a" }}
                     >
                       {step.number}
                     </span>
                   </div>
 
                   {/* Content */}
-                  <h3 className="font-display text-2xl font-semibold mb-4">
-                    {step.title}
-                  </h3>
+                  <h3 className="text-2xl font-semibold mb-4">{step.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed max-w-[220px]">
                     {step.description}
                   </p>

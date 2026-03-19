@@ -15,8 +15,8 @@ export default function HeroSection() {
           className="w-full h-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30" />
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
@@ -25,12 +25,12 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          {/* Product Designer - white */}
+          {/* Product Designer */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm font-medium tracking-[0.25em] uppercase mb-6 text-white"
+            className="text-sm font-medium tracking-[0.25em] uppercase mb-6 text-white/80"
           >
             Product Designer
           </motion.p>
@@ -43,7 +43,7 @@ export default function HeroSection() {
             className="font-display font-bold leading-none tracking-tight mb-8"
             style={{
               fontSize: "clamp(3.5rem, 9vw, 10rem)",
-              textShadow: "0 2px 20px rgba(0,0,0,0.8)",
+              textShadow: "0 2px 20px rgba(0,0,0,0.4)",
               color: "#F8CB45",
             }}
           >
@@ -56,7 +56,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg md:text-xl max-w-lg mb-10 font-light leading-relaxed text-white/90"
+            className="text-lg md:text-xl max-w-lg mb-10 font-light leading-relaxed text-white/80"
           >
             I craft digital experiences that people love.
           </motion.p>
@@ -81,7 +81,7 @@ export default function HeroSection() {
             <Button
               asChild
               size="lg"
-              className="font-semibold tracking-wide px-8 rounded-none transition-all duration-300 border-2 bg-transparent"
+              className="font-semibold tracking-wide px-8 rounded-none transition-all duration-300 border-2 bg-transparent hover:bg-white/10"
               style={{ borderColor: "#F8CB45", color: "#F8CB45" }}
               data-ocid="hero.secondary_button"
             >
@@ -95,7 +95,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}
-        className="absolute bottom-8 right-8 md:right-12 flex flex-col items-center gap-2 text-white/60"
+        className="absolute bottom-8 right-8 md:right-12 flex flex-col items-center gap-2 text-white/50"
       >
         <span className="text-xs tracking-widest uppercase rotate-90 origin-center mb-2">
           Scroll
