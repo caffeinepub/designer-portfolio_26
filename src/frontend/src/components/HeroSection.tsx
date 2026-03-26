@@ -29,7 +29,11 @@ export default function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              delay: 0.2,
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="text-sm font-medium tracking-[0.25em] uppercase mb-6 text-white/80"
           >
             Product Designer
@@ -39,10 +43,14 @@ export default function HeroSection() {
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              delay: 0.35,
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="font-display font-bold leading-none tracking-tight mb-8"
             style={{
-              fontSize: "clamp(3.5rem, 9vw, 10rem)",
+              fontSize: "clamp(3rem, 7vw, 9rem)",
               textShadow: "0 2px 20px rgba(0,0,0,0.4)",
               color: "#F8CB45",
             }}
@@ -55,7 +63,11 @@ export default function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              delay: 0.55,
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="text-lg md:text-xl max-w-lg mb-10 font-light leading-relaxed text-white/80"
           >
             I craft digital experiences that people love.
@@ -64,7 +76,11 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              delay: 0.7,
+              duration: 0.7,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="flex flex-wrap gap-4"
           >
             {/* View Work - filled yellow */}
