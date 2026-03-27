@@ -149,7 +149,7 @@ export default function WorkSection() {
                   </h3>
                 )}
                 {project.descriptionAsHeading ? (
-                  <h4 className="text-base font-semibold leading-snug text-foreground">
+                  <h4 className="text-xl font-semibold leading-snug text-foreground">
                     {project.description}
                   </h4>
                 ) : (
