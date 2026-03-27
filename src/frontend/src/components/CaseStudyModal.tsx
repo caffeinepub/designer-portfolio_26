@@ -13,6 +13,8 @@ import { Briefcase, Clock, ExternalLink, Tag, X } from "lucide-react";
 export interface Project {
   title: string;
   description: string;
+  descriptionAsHeading?: boolean;
+  hideTitle?: boolean;
   tags: string[];
   cover: string;
   modalCover?: string;

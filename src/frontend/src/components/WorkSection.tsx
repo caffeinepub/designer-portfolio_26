@@ -8,7 +8,9 @@ const projects: Project[] = [
   {
     title: "Product Description",
     description:
-      "Redesigned the Product Description Screen Experience for 1.8 million users. Product Detail Engagement Increased by 40%.",
+      "Redesigned the Product Description Screen Experience for 1.8 million users Engagement Increased by 40%.",
+    descriptionAsHeading: true,
+    hideTitle: true,
     tags: ["Mobile", "UX", "Figma"],
     cover: "/assets/uploads/Project-1-Thumbnail-1.png",
     modalCover: "/assets/uploads/Project_1_Model_Pop_Up-1.png",
@@ -141,10 +143,20 @@ export default function WorkSection() {
                     </Badge>
                   ))}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {project.description}
-                </p>
+                {!project.hideTitle && (
+                  <h3 className="text-xl font-semibold mb-2">
+                    {project.title}
+                  </h3>
+                )}
+                {project.descriptionAsHeading ? (
+                  <h4 className="text-base font-semibold leading-snug text-foreground">
+                    {project.description}
+                  </h4>
+                ) : (
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
+                )}
               </div>
             </motion.article>
           ))}
