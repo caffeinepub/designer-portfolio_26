@@ -34,7 +34,9 @@ const projects: Project[] = [
   {
     title: "Ayurvedic Healthcare App",
     description:
-      "Designed UI for an Ayurvedic healthcare app covering doctor consultations, product discovery, and blogs. Transformed client-provided wireframes into intuitive, scalable mobile interfaces.",
+      "Improved UX/UI boosted Amrutam app downloads from 20K+ to 100K+.",
+    descriptionAsHeading: true,
+    hideTitle: true,
     tags: ["Mobile", "UI", "Figma"],
     cover: "/assets/uploads/Ayurveda-1-1.png",
     modalCover: "/assets/uploads/Project_2_Model_Pop_Up-1.png",
