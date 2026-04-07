@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
-import { SiBehance, SiDribbble, SiLinkedin } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
+import { SiBehance, SiDribbble } from "react-icons/si";
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -104,7 +105,7 @@ export default function ContactSection() {
                 data-ocid="contact.linkedin.link"
                 className="text-muted-foreground hover:text-gray-900 transition-colors p-2 border border-border hover:border-gray-800"
               >
-                <SiLinkedin size={18} />
+                <FaLinkedin size={18} />
               </a>
               <a
                 href="https://www.behance.net/abhishekbeniwal"

@@ -1,0 +1,28 @@
+type Time = int;
+type Project = 
+ record {
+   coverUrl: text;
+   description: text;
+   link: text;
+   order: nat;
+   tags: vec text;
+   title: text;
+ };
+type ContactSubmission = 
+ record {
+   email: text;
+   message: text;
+   name: text;
+   timestamp: Time;
+ };
+service : {
+  addProject: (title: text, description: text, tags: vec text, coverUrl:
+   text, link: text, order: nat) -> ();
+  deleteProject: (title: text) -> ();
+  getContactSubmissions: () -> (vec ContactSubmission) query;
+  getProjects: () -> (vec Project) query;
+  initialize: () -> ();
+  submitContactForm: (name: text, email: text, message: text) -> ();
+  updateProject: (title: text, description: text, tags: vec text, coverUrl:
+   text, link: text, order: nat) -> ();
+}

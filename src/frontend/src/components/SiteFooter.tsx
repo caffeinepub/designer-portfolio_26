@@ -1,4 +1,5 @@
-import { SiDribbble, SiLinkedin, SiX } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
+import { SiDribbble, SiX } from "react-icons/si";
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -33,7 +34,7 @@ export default function SiteFooter() {
             data-ocid="footer.linkedin.link"
             className="text-muted-foreground hover:text-gold transition-colors"
           >
-            <SiLinkedin size={16} />
+            <FaLinkedin size={16} />
           </a>
           <a
             href="https://dribbble.com"
