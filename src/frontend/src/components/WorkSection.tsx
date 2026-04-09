@@ -34,7 +34,7 @@ const projects: Project[] = [
   {
     title: "Ayurvedic Healthcare App",
     description:
-      "Improved UX/UI boosted Amrutam app downloads from 20K+ to 100K+.",
+      "Existing platforms often lack a simple consultation booking process and organized product discovery experience",
     descriptionAsHeading: true,
     hideTitle: true,
     tags: ["Mobile", "UI", "Figma"],
